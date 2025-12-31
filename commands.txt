@@ -11,9 +11,14 @@ npm run format // does the same as the above.
 npm run typecheck // added to pkg.json "typecheck": "tsc --noEmit"
 
 
+// tailwind. 
+learn tailwind, ensure that the variables are re-usable. Learn once, write everywhere
+make variants for the different buttons, etc. 
+CVA - class Variants Authority, in tailwind helps u manage this. 
+
 // Packages
 npx shadcn@latest init // Slate
 npx shadcn@latest add @shadcn/navigation-menu
 npx shadcn@latest add @shadcn/button
 npm run lint -- --fix --unsafe // fix issues with biome
- npx shadcn@latest add @shadcn/card  
+ npx shadcn@latest add @shadcn/card  , badge, input 
