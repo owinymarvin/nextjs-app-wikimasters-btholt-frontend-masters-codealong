@@ -1,0 +1,19 @@
+//terminal - starship
+curl -sS https://starship.rs/install.sh | sh
+eval "$(starship init zsh)" // zshrc
+
+
+npm run lint // biome checks 
+npm run lint -- --fix // fix issues with biome
+npm run lint -- --fix --unsafe // fix issues with biome
+npx biome format // runs the biome formatter similar to prettier
+npm run format // does the same as the above. 
+npm run typecheck // added to pkg.json "typecheck": "tsc --noEmit"
+
+
+// Packages
+npx shadcn@latest init // Slate
+npx shadcn@latest add @shadcn/navigation-menu
+npx shadcn@latest add @shadcn/button
+npm run lint -- --fix --unsafe // fix issues with biome
+ npx shadcn@latest add @shadcn/card  
