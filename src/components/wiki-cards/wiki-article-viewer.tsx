@@ -39,14 +39,14 @@ export default function WikiArticleViewer({
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto max-w-4xl px-4 py-8">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-6">
+      <nav className="text-muted-foreground mb-6 flex items-center space-x-2 text-sm">
         <Link
           href="/"
-          className="flex items-center hover:text-foreground transition-colors"
+          className="hover:text-foreground flex items-center transition-colors"
         >
-          <Home className="h-4 w-4 mr-1" />
+          <Home className="mr-1 h-4 w-4" />
           Home
         </Link>
         <ChevronRight className="h-4 w-4" />
@@ -54,20 +54,20 @@ export default function WikiArticleViewer({
       </nav>
 
       {/* Article Header */}
-      <div className="flex justify-between items-start mb-6">
+      <div className="mb-6 flex items-start justify-between">
         <div className="flex-1">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-foreground mb-4 text-4xl font-bold">
             {article.title}
           </h1>
 
           {/* Article Metadata */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
             <div className="flex items-center">
-              <User className="h-4 w-4 mr-1" />
+              <User className="mr-1 h-4 w-4" />
               <span>By {article.author ?? "Unknown"}</span>
             </div>
             <div className="flex items-center">
-              <Calendar className="h-4 w-4 mr-1" />
+              <Calendar className="mr-1 h-4 w-4" />
               <span>{formatDate(article.createdAt)}</span>
             </div>
             <div className="flex items-center">
@@ -81,7 +81,7 @@ export default function WikiArticleViewer({
           <div className="ml-4 flex items-center gap-2">
             <Link href={`/wiki/edit/${article.id}`} className="cursor-pointer">
               <Button variant="outline" className="cursor-pointer">
-                <Edit className="h-4 w-4 mr-2" />
+                <Edit className="mr-2 h-4 w-4" />
                 Edit Article
               </Button>
             </Link>
@@ -94,7 +94,7 @@ export default function WikiArticleViewer({
                 variant="destructive"
                 className="ml-2 cursor-pointer"
               >
-                <Trash className="h-4 w-4 mr-2" />
+                <Trash className="mr-2 h-4 w-4" />
                 Delete
               </Button>
             </form>
@@ -108,7 +108,7 @@ export default function WikiArticleViewer({
           {/* Article Image - Display if exists */}
           {article.imageUrl && (
             <div className="mb-8">
-              <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden">
+              <div className="relative h-64 w-full overflow-hidden rounded-lg md:h-80">
                 <Image
                   src={article.imageUrl}
                   alt={`Image for ${article.title}`}
@@ -126,43 +126,43 @@ export default function WikiArticleViewer({
               components={{
                 // Customize heading styles
                 h1: ({ children }) => (
-                  <h1 className="text-3xl font-bold mt-8 mb-4 text-foreground">
+                  <h1 className="text-foreground mt-8 mb-4 text-3xl font-bold">
                     {children}
                   </h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-2xl font-semibold mt-6 mb-3 text-foreground">
+                  <h2 className="text-foreground mt-6 mb-3 text-2xl font-semibold">
                     {children}
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-xl font-semibold mt-4 mb-2 text-foreground">
+                  <h3 className="text-foreground mt-4 mb-2 text-xl font-semibold">
                     {children}
                   </h3>
                 ),
                 // Customize paragraph styles
                 p: ({ children }) => (
-                  <p className="mb-4 text-foreground leading-7">{children}</p>
+                  <p className="text-foreground mb-4 leading-7">{children}</p>
                 ),
                 // Customize list styles
                 ul: ({ children }) => (
-                  <ul className="mb-4 ml-6 list-disc text-foreground">
+                  <ul className="text-foreground mb-4 ml-6 list-disc">
                     {children}
                   </ul>
                 ),
                 ol: ({ children }) => (
-                  <ol className="mb-4 ml-6 list-decimal text-foreground">
+                  <ol className="text-foreground mb-4 ml-6 list-decimal">
                     {children}
                   </ol>
                 ),
                 li: ({ children }) => (
-                  <li className="mb-1 text-foreground">{children}</li>
+                  <li className="text-foreground mb-1">{children}</li>
                 ),
                 // Customize code styles
                 code: ({ children, className }) => {
                   const isInline = !className;
                   return isInline ? (
-                    <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-foreground">
+                    <code className="bg-muted text-foreground rounded px-1.5 py-0.5 font-mono text-sm">
                       {children}
                     </code>
                   ) : (
@@ -170,13 +170,13 @@ export default function WikiArticleViewer({
                   );
                 },
                 pre: ({ children }) => (
-                  <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+                  <pre className="bg-muted mb-4 overflow-x-auto rounded-lg p-4 text-sm">
                     {children}
                   </pre>
                 ),
                 // Customize blockquote styles
                 blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-muted-foreground pl-4 italic my-4 text-muted-foreground">
+                  <blockquote className="border-muted-foreground text-muted-foreground my-4 border-l-4 pl-4 italic">
                     {children}
                   </blockquote>
                 ),
@@ -184,7 +184,7 @@ export default function WikiArticleViewer({
                 a: ({ children, href }) => (
                   <a
                     href={href}
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary text-5xl font-medium hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -193,19 +193,19 @@ export default function WikiArticleViewer({
                 ),
                 // Customize table styles
                 table: ({ children }) => (
-                  <div className="overflow-x-auto mb-4">
-                    <table className="min-w-full border-collapse border border-border">
+                  <div className="mb-4 overflow-x-auto">
+                    <table className="border-border min-w-full border-collapse border">
                       {children}
                     </table>
                   </div>
                 ),
                 th: ({ children }) => (
-                  <th className="border border-border bg-muted px-4 py-2 text-left font-semibold">
+                  <th className="border-border bg-muted border px-4 py-2 text-left font-semibold">
                     {children}
                   </th>
                 ),
                 td: ({ children }) => (
-                  <td className="border border-border px-4 py-2">{children}</td>
+                  <td className="border-border border px-4 py-2">{children}</td>
                 ),
               }}
             >
@@ -216,7 +216,7 @@ export default function WikiArticleViewer({
       </Card>
 
       {/* Footer Actions */}
-      <div className="mt-8 flex justify-between items-center">
+      <div className="mt-8 flex items-center justify-between">
         <Link href="/">
           <Button variant="outline">← Back to Articles</Button>
         </Link>
@@ -225,7 +225,7 @@ export default function WikiArticleViewer({
           <div className="flex items-center gap-2">
             <Link href={`/wiki/edit/${article.id}`} className="cursor-pointer">
               <Button className="cursor-pointer">
-                <Edit className="h-4 w-4 mr-2" />
+                <Edit className="mr-2 h-4 w-4" />
                 Edit This Article
               </Button>
             </Link>
@@ -237,7 +237,7 @@ export default function WikiArticleViewer({
                 variant="destructive"
                 className="cursor-pointer"
               >
-                <Trash className="h-4 w-4 mr-2" />
+                <Trash className="mr-2 h-4 w-4" />
                 Delete
               </Button>
             </form>
