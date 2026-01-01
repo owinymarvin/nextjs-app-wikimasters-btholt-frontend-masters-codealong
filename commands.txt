@@ -22,3 +22,9 @@ npx shadcn@latest add @shadcn/navigation-menu
 npx shadcn@latest add @shadcn/button
 npm run lint -- --fix --unsafe // fix issues with biome
  npx shadcn@latest add @shadcn/card  , badge, input 
+
+
+ // Stack Auth. 
+ npx @stackframe/init-stack@latest --no-browser // Register and sign up. 
+ https://fullstack-v4.holt.courses/lessons/auth/signin-and-signup // proecedure to setup stack auth and the neon database string 
+ 

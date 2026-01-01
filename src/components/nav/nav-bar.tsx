@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { stackServerApp } from "@/stack/server";
+import { UserButton } from "@stackframe/stack";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -6,14 +8,15 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-export function NavBar() {
+export async function NavBar() {
+  const user = await stackServerApp.getUser();
   return (
-    <nav className="w-full border-b bg-white/80 backdrop-blue supports-backdrop-filter:bg-white/60 sticky top-0 z-50">
-      <div className="container mx-auto justify-between flex h-16 items-center px-4">
+    <nav className="backdrop-blue sticky top-0 z-50 w-full border-b bg-white/80 supports-backdrop-filter:bg-white/60">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <Link
             href={"/"}
-            className="font-bold text-xl tracking-tight text-gray-900"
+            className="text-xl font-bold tracking-tight text-gray-900"
           >
             WikiMasters
           </Link>
@@ -21,16 +24,24 @@ export function NavBar() {
 
         <NavigationMenu className="ml-auto pr-2">
           <NavigationMenuList className="flex gap-3">
-            <NavigationMenuItem>
-              <Button asChild variant={"outline"}>
-                <Link href={"/signin"}>Sign In</Link>
-              </Button>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Button asChild>
-                <Link href={"/signup"}>Sign Up</Link>
-              </Button>
-            </NavigationMenuItem>
+            {user ? (
+              <NavigationMenuItem>
+                <UserButton />
+              </NavigationMenuItem>
+            ) : (
+              <>
+                <NavigationMenuItem>
+                  <Button asChild variant="outline">
+                    <Link href="/handler/sign-in">Sign In</Link>
+                  </Button>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Button asChild>
+                    <Link href="/handler/sign-up">Sign Up</Link>
+                  </Button>
+                </NavigationMenuItem>
+              </>
+            )}
           </NavigationMenuList>
         </NavigationMenu>
       </div>
