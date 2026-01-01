@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { stackServerApp } from "@/stack/server";
 
 export type CreateArticleInput = {
   title: string;
@@ -16,18 +17,31 @@ export type UpdateArticleInput = {
 };
 
 export async function createArticle(data: CreateArticleInput) {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  if (!user) {
+    throw new Error("User must be logged in to create an article");
+  }
   // TODO: Replace with actual database call
   console.log("✨ createArticle called:", data);
   return { success: true, message: "Article create logged (stub)" };
 }
 
-export async function updateArticle(id: string, data: UpdateArticleInput) {
+export async function updateArticle(_id: string, data: UpdateArticleInput) {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  if (!user) {
+    throw new Error("User must be logged in to update an article");
+  }
+  const authorId = user.id;
   // TODO: Replace with actual database update
-  console.log("📝 updateArticle called:", { id, ...data });
-  return { success: true, message: `Article ${id} update logged (stub)` };
+  console.log("📝 updateArticle called:", { authorId, ...data });
+  return { success: true, message: `Article ${authorId} update logged (stub)` };
 }
 
 export async function deleteArticle(id: string) {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  if (!user) {
+    throw new Error("User must be logged in to delete an article");
+  }
   // TODO: Replace with actual database delete
   console.log("🗑️ deleteArticle called:", id);
   return { success: true, message: `Article ${id} delete logged (stub)` };

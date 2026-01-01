@@ -3,12 +3,12 @@ curl -sS https://starship.rs/install.sh | sh
 eval "$(starship init zsh)" // zshrc
 
 
-npm run lint // biome checks 
-npm run lint -- --fix // fix issues with biome
-npm run lint -- --fix --unsafe // fix issues with biome
-npx biome format // runs the biome formatter similar to prettier
-npm run format // does the same as the above. 
-npm run typecheck // added to pkg.json "typecheck": "tsc --noEmit"
+bun run lint // biome checks 
+bun run lint -- --fix // fix issues with biome
+bun run lint -- --fix --unsafe // fix issues with biome
+bun biome format // runs the biome formatter similar to prettier
+bun run format // does the same as the above. 
+bun run typecheck // added to pkg.json "typecheck": "tsc --noEmit"
 
 
 // tailwind. 
@@ -17,14 +17,19 @@ make variants for the different buttons, etc.
 CVA - class Variants Authority, in tailwind helps u manage this. 
 
 // Packages
-npx shadcn@latest init // Slate
-npx shadcn@latest add @shadcn/navigation-menu
-npx shadcn@latest add @shadcn/button
-npm run lint -- --fix --unsafe // fix issues with biome
- npx shadcn@latest add @shadcn/card  , badge, input 
+bun shadcn@latest init // Slate
+bun shadcn@latest add @shadcn/navigation-menu
+bun shadcn@latest add @shadcn/button
+bun run lint -- --fix --unsafe // fix issues with biome
+bun shadcn@latest add @shadcn/card  , badge, input 
 
 
- // Stack Auth. 
- npx @stackframe/init-stack@latest --no-browser // Register and sign up. 
- https://fullstack-v4.holt.courses/lessons/auth/signin-and-signup // proecedure to setup stack auth and the neon database string 
+// Stack Auth. 
+npx @stackframe/init-stack@latest --no-browser // Register and sign up. 
+https://fullstack-v4.holt.courses/lessons/auth/signin-and-signup // proecedure to setup stack auth and the neon database string 
  
+// Drizzle ORM. 
+bun install drizzle-orm @neondatabase/serverless dotenv
+bun install -D drizzle-kit drizzle-seed // creates and manages migrations for you, seed generates seed or initial data. 
+bun drizzle-kit generate
+bun drizzle-kit migrate
