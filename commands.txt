@@ -33,3 +33,21 @@ bun install drizzle-orm @neondatabase/serverless dotenv
 bun install -D drizzle-kit drizzle-seed // creates and manages migrations for you, seed generates seed or initial data. 
 bun drizzle-kit generate
 bun drizzle-kit migrate
+
+// Prisma
+bun install -D prisma @types/node @types/pg
+bun install @prisma/client @prisma/adapter-pg pg dotenv
+
+prisma - The Prisma CLI for running commands like prisma init, prisma migrate, and prisma generate
+@prisma/client - The Prisma Client library for querying your database
+@prisma/adapter-pg - The node-postgres driver adapter that connects Prisma Client to your database
+pg - The node-postgres database driver
+@types/pg - TypeScript type definitions for node-postgres
+dotenv - Loads environment variables from your .env file
+
+//prisma commands 
+prisma init 
+
+// migrations 
+npx prisma migrate dev --name init
+npx prisma generate
